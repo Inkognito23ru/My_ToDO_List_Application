@@ -12,9 +12,17 @@ public class App extends Application {
     private AppDatabase database;
     private NoteDao noteDao;
 
+    private static App instance;
+
+    public static App getInstance(){
+        return instance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        instance = this;
 
         database = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "database")
